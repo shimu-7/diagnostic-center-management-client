@@ -1,8 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Bye!!!",
+                    text: "You are Logged Out",
+
+                });
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+    console.log(user)
     const links = <>
         <li className="mx-2"><NavLink
             to="/"
@@ -17,11 +37,23 @@ const Navbar = () => {
             Home
         </NavLink>
         </li>
-        <li><a>Submenu 2</a></li>
+        <li className="mx-2"><NavLink
+            to="/allTest"
+            style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                    fontWeight: isActive ? "bold " : "",
+                    color: isPending ? "" : "red",
+                    viewTransitionName: isTransitioning ? "slide" : "",
+                };
+            }}
+        >
+            All Test
+        </NavLink>
+        </li>
     </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar  z-10 bg-opacity-30 max-w-7xl">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,17 +72,34 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <div   className="btn btn-ghost btn-circle avatar">
-                        <div className=" rounded-full">
-                        <CgProfile className="text-3xl"></CgProfile>
-                        </div>
-                        
-                    </div>
 
-                    <a className="btn">Button</a>
+
+                <div className="navbar-end">
+                    <div className="btn btn-ghost btn-circle avatar">
+                        {
+                            user?.photoURL ? <div className="rounded-full">
+                                <img src={user.photoURL} alt="" />
+                            </div>
+                                :
+                                <div className="rounded-full">
+                                    <CgProfile className="text-3xl"></CgProfile>
+                                </div>
+                        }
+
+
+                    </div>
+                    {
+                        user ? <button className="btn  btn-accent"><Link onClick={handleSignOut} to="/">Sign Out</Link></button> :
+                            <Link to="/signIn">
+                                <button className="btn  btn-accent">Sign In</button>
+                            </Link>
+                    }
+
+
                 </div>
+
             </div>
+            <div className="w-full h-[1px] bg-slate-400"></div>
         </div>
     );
 };
