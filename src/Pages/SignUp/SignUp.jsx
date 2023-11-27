@@ -56,7 +56,8 @@ const SignUp = () => {
             }
         })
         console.log(data)
-        const { name, email, district, upazila, password, confirm, blood } = data;
+       
+        const { name, email, district, upazila, password, confirm, blood} = data;
         console.log(name, email, district, upazila, password, confirm)
         createUser(email, password)
             .then(result => {
@@ -67,7 +68,8 @@ const SignUp = () => {
                     image: res.data.data.display_url,
                     district: district,
                     upazila: upazila,
-                    blood: blood
+                    blood: blood,
+                    status: 1
                 }
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
@@ -76,7 +78,7 @@ const SignUp = () => {
                             reset();
                             updateProfile(result.user, {
                                 displayName: name,
-                                photoURL: res.data.data.display_url
+                                photoURL: userInfo.image
                             })
                                 .then(() => {
                                     Swal.fire({
@@ -211,7 +213,16 @@ const SignUp = () => {
                             <div className="form-control mt-6">
                                 <button className="btn text-white btn-accent ">SignUp</button>
                             </div>
-
+                            <p>Already have an account?
+                                <Link to="/signIn">
+                                    <span className="underline ml-2 text-blue-500">
+                                        Sign In
+                                    </span>
+                                </Link>
+                            </p>
+                            {
+                                error && <p className="text-red-600">{error}</p>
+                            }
 
                         </form>
 
