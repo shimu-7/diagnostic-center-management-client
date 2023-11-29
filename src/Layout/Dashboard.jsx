@@ -1,8 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    //const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin)
     return (
         <div className="flex">
             <div className="w-64 min-h-screen bg-slate-300">
@@ -17,6 +20,14 @@ const Dashboard = () => {
                             <li className="flex ">
 
                                 <NavLink to="/dashboard/allUsers">Manage User</NavLink>
+                            </li>
+                            <li className="flex ">
+
+                                <NavLink to="/dashboard/addTest">Add Test</NavLink>
+                            </li>
+                            <li className="flex ">
+
+                                <NavLink to="/dashboard/manageTest">Manage Test</NavLink>
                             </li>
 
                         </> :

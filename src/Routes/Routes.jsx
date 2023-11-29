@@ -10,6 +10,9 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Dashboard from "../Layout/Dashboard";
 import AdminHome from "../Pages/Dashboard/AdminHome";
 import AllUsers from "../Pages/Dashboard/AllUsers";
+import AddTest from "../Pages/Dashboard/AddTest";
+import ManageTest from "../Pages/Dashboard/ManageTest";
+import UpdateTest from "../Pages/Dashboard/UpdateTest";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +48,18 @@ export const router = createBrowserRouter([
             {
                 path: "allUsers",
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: "addTest",
+                element: <AddTest></AddTest>
+            },
+            {
+                path: "manageTest",
+                element: <ManageTest></ManageTest>
+            },
+            {
+                path: "updateTest/:id",
+                element: <UpdateTest></UpdateTest>
             }
         ]
     }
