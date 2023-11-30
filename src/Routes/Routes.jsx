@@ -16,6 +16,9 @@ import UpdateTest from "../Pages/Dashboard/UpdateTest";
 import Reservation from "../Pages/Dashboard/Reservation";
 import AddBanner from "../Pages/Dashboard/AddBanner";
 import ManageBanner from "../Pages/Dashboard/ManageBanner";
+import TestDetails from "../Pages/TestDetails";
+import PrivateRoute from "./PrivateRoute";
+import MyProfile from "../Pages/Dashboard/MyProfile";
 
 export const router = createBrowserRouter([
     {
@@ -37,12 +40,17 @@ export const router = createBrowserRouter([
             {
                 path: "signUp",
                 element: <SignUp></SignUp>
+            },
+            {
+                path: "testDetails/:id",
+                element: <PrivateRoute><TestDetails></TestDetails></PrivateRoute>,
+                loader: ({params})=>fetch(`http://localhost:5000/tests/${params.id}`)
             }
         ]
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path:"adminHome",
@@ -76,6 +84,10 @@ export const router = createBrowserRouter([
             {
                 path: "manageBanner",
                 element: <ManageBanner></ManageBanner>
+            },
+            {
+                path: "myProfile",
+                element: <MyProfile></MyProfile>
             }
         ]
     }

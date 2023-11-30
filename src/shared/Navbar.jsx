@@ -75,7 +75,40 @@ const Navbar = () => {
 
 
                 <div className="navbar-end flex items-center">
-                    <Link to="/dashboard" className="mr-1">
+                    {
+                        user?.role === 'admin' ?
+                            <Link to="/dashboard/adminHome" className="mr-1">
+                                <div className="btn btn-ghost btn-circle avatar">
+                                    {
+                                        user?.photoURL ? <div className="rounded-full">
+                                            <img src={user.photoURL} alt="" />
+                                        </div>
+                                            :
+                                            <div className="rounded-full">
+                                                <CgProfile className="text-3xl"></CgProfile>
+                                            </div>
+                                    }
+
+
+                                </div>
+                            </Link>
+                            : <Link to="/dashboard/myProfile" className="mr-1">
+                                <div className="btn btn-ghost btn-circle avatar">
+                                    {
+                                        user?.photoURL ? <div className="rounded-full">
+                                            <img src={user.photoURL} alt="" />
+                                        </div>
+                                            :
+                                            <div className="rounded-full">
+                                                <CgProfile className="text-3xl"></CgProfile>
+                                            </div>
+                                    }
+
+
+                                </div>
+                            </Link>
+                    }
+                    {/* <Link to="/dashboard" className="mr-1">
                         <div className="btn btn-ghost btn-circle avatar">
                             {
                                 user?.photoURL ? <div className="rounded-full">
@@ -89,7 +122,7 @@ const Navbar = () => {
 
 
                         </div>
-                    </Link>
+                    </Link> */}
                     {
                         user ? <button className="btn  btn-accent"><Link onClick={handleSignOut} to="/">Sign Out</Link></button> :
                             <Link to="/signIn">

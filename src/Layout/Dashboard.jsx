@@ -42,7 +42,7 @@ const Dashboard = () => {
                             <>
                                 <li className="flex ">
 
-                                    <NavLink to="/dashboard/userHome">User Home</NavLink>
+                                    <NavLink to="/dashboard/myProfile">My Profile</NavLink>
                                 </li>
 
                             </>
