@@ -29,6 +29,14 @@ const Dashboard = () => {
 
                                 <NavLink to="/dashboard/manageTest">Manage Test</NavLink>
                             </li>
+                            <li className="flex ">
+
+                                <NavLink to="/dashboard/addBanner">Add Banner</NavLink>
+                            </li>
+                            <li className="flex ">
+
+                                <NavLink to="/dashboard/manageBanner">Manage Banner</NavLink>
+                            </li>
 
                         </> :
                             <>

@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import useTest from "../../hooks/useTest";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FcViewDetails } from "react-icons/fc";
-import UpdateTest from "./UpdateTest";
 import { useNavigate } from "react-router-dom";
 
 const ManageTest = () => {
@@ -38,13 +37,12 @@ const ManageTest = () => {
     }
 
     const handleUpdateTest = (item) => {
-        <UpdateTest item={item}></UpdateTest>
         navigate(`/dashboard/updateTest/${item._id}`)
         console.log("clicked")
     }
 
     const handleReservation = (item) =>{
-
+        navigate(`/dashboard/reservation/${item._id}`)
     }
 
 

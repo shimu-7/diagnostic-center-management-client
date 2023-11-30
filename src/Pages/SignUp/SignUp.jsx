@@ -104,7 +104,7 @@ const SignUp = () => {
     }
     return (
         <div>
-            <h2 className="text-3xl">Sign up here{districts.length}</h2>
+            {/* <h2 className="text-3xl">Sign up here{districts.length}</h2> */}
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col md:flex-row-reverse">
                     <div className="text-center md:w-1/3 lg:text-left">
@@ -226,18 +226,7 @@ const SignUp = () => {
 
                         </form>
 
-                        <div className="card md:w-2/3  shadow-md bg-base-100">
-                            <p>Already have an account?
-                                <Link to="/signIn">
-                                    <span className="underline ml-2 text-blue-500">
-                                        Sign In
-                                    </span>
-                                </Link>
-                            </p>
-                            {
-                                error && <p className="text-red-600">{error}</p>
-                            }
-                        </div>
+                        
 
 
                     </div>

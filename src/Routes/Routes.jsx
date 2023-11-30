@@ -13,6 +13,9 @@ import AllUsers from "../Pages/Dashboard/AllUsers";
 import AddTest from "../Pages/Dashboard/AddTest";
 import ManageTest from "../Pages/Dashboard/ManageTest";
 import UpdateTest from "../Pages/Dashboard/UpdateTest";
+import Reservation from "../Pages/Dashboard/Reservation";
+import AddBanner from "../Pages/Dashboard/AddBanner";
+import ManageBanner from "../Pages/Dashboard/ManageBanner";
 
 export const router = createBrowserRouter([
     {
@@ -59,7 +62,20 @@ export const router = createBrowserRouter([
             },
             {
                 path: "updateTest/:id",
-                element: <UpdateTest></UpdateTest>
+                element: <UpdateTest></UpdateTest>,
+                loader: ({params})=>fetch(`http://localhost:5000/tests/${params.id}`)
+            },
+            {
+                path: "reservation/:id",
+                element: <Reservation></Reservation>
+            },
+            {
+                path: "addBanner",
+                element: <AddBanner></AddBanner>
+            },
+            {
+                path: "manageBanner",
+                element: <ManageBanner></ManageBanner>
             }
         ]
     }

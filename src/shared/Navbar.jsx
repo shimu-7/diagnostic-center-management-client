@@ -63,7 +63,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl"><img className="w-12 h-12" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPy3K89FwyOYVUOqpFySoNluQx6fPUScWekw&usqp=CAU" alt="" /></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="flex mx-2 ">
