@@ -9,6 +9,7 @@ const Test = ({ test }) => {
                 <div className="card-body">
                     <h2 className="card-title">{test?.name}</h2>
                     <p><span className="font-semibold">Available Slot</span>: {test?.slot}</p>
+                    <p>Appintment Date: {test?.date}</p>
                     <Link to={`/testDetails/${test._id}`}><button className="btn btn-accent"> Show Details</button></Link>
 
                 </div>

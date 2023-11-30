@@ -2,40 +2,53 @@ import { Link, useLoaderData } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import moment from "moment/moment";
 
 
 const TestDetails = () => {
     const test = useLoaderData();
     console.log(test);
-    const {user, loading} = useAuth();
+    const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const { data: userInfo, refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/users/${user.email}`);
+            return res.data;
+        }
+    })
 
-    const handleReserve = async() =>{
+    const handleReserve = async () => {
+        const testDate = test.date
         const email = user.email
         const testName = test.name
         const price = test.price
         const image = test.image
-        const slot= test.slot
-        const reserved = {email,testName,price, image}
-        if(slot<=0){
+        const slot = test.slot
+        const rDate = moment().format('YYYY-MM-D')
+        const status = "pending"
+        const reserved = { email, testName, price, image, rDate, testDate, status }
+        if (slot <= 0 || !userInfo.status) {
             return Swal.fire({
                 title: 'An error occurred !!!',
-                text: 'Not Eligible to reserve this test due to short slot',
+                text: 'Not Eligible to reserve this test',
                 icon: 'error',
                 confirmButtonText: 'OK'
             })
         }
         axiosPublic.patch(`/tests/slot/${test._id}`)
-        const res =await axiosPublic.post('/reservations',reserved)
+        const res = await axiosPublic.post('/reservations', reserved)
         console.log(res.data)
-        if(res.data.insertedId){
+        if (res.data.insertedId) {
+            refetch()
             Swal.fire({
                 position: "top-end",
                 icon: "success",
                 title: "You reserve this test successfully",
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
         }
 
 

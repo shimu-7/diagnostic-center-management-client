@@ -46,7 +46,7 @@ const AddTest = () => {
     };
     return (
         <div>
-
+            <h1 className="text-4xl font-semibold text-center my-4">Add A Test</h1>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full">

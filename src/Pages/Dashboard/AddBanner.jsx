@@ -45,7 +45,7 @@ const AddBanner = () => {
     };
     return (
         <div>
-            add Banner
+             <h1 className="text-4xl font-semibold text-center my-4">Add New Banner</h1>
 
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>

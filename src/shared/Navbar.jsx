@@ -3,10 +3,15 @@ import { CgProfile } from "react-icons/cg";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../hooks/useAdmin";
+import Avatar from '@mui/material/Avatar';
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
+
+    const [isAdmin] = useAdmin();
+
 
     const handleSignOut = () => {
         logOut()
@@ -48,6 +53,47 @@ const Navbar = () => {
             }}
         >
             All Test
+
+        </NavLink>
+        </li>
+        <li className="mx-2"><NavLink
+            to="/doctor"
+            style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                    fontWeight: isActive ? "bold " : "",
+                    color: isPending ? "" : "red",
+                    viewTransitionName: isTransitioning ? "slide" : "",
+                };
+            }}
+        >
+            Physicians
+
+        </NavLink>
+        </li>
+        <li className="mx-2"><NavLink
+            to="/about"
+            style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                    fontWeight: isActive ? "bold " : "",
+                    color: isPending ? "" : "red",
+                    viewTransitionName: isTransitioning ? "slide" : "",
+                };
+            }}
+        >
+            About Us
+        </NavLink>
+        </li>
+        <li className="mx-2"><NavLink
+            to="/contact"
+            style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                    fontWeight: isActive ? "bold " : "",
+                    color: isPending ? "" : "red",
+                    viewTransitionName: isTransitioning ? "slide" : "",
+                };
+            }}
+        >
+            Contact Us
         </NavLink>
         </li>
     </>
@@ -76,12 +122,13 @@ const Navbar = () => {
 
                 <div className="navbar-end flex items-center">
                     {
-                        user?.role === 'admin' ?
+                        isAdmin ?
                             <Link to="/dashboard/adminHome" className="mr-1">
                                 <div className="btn btn-ghost btn-circle avatar">
                                     {
                                         user?.photoURL ? <div className="rounded-full">
-                                            <img src={user.photoURL} alt="" />
+                                            <Avatar alt="Remy Sharp" src={user.photoURL} />
+                                            {/* <img src={user.photoURL} alt="" /> */}
                                         </div>
                                             :
                                             <div className="rounded-full">
@@ -96,7 +143,8 @@ const Navbar = () => {
                                 <div className="btn btn-ghost btn-circle avatar">
                                     {
                                         user?.photoURL ? <div className="rounded-full">
-                                            <img src={user.photoURL} alt="" />
+                                            <Avatar alt="Remy Sharp" src={user.photoURL} />
+                                            {/* <img src={user.photoURL} alt="" /> */}
                                         </div>
                                             :
                                             <div className="rounded-full">
@@ -108,21 +156,6 @@ const Navbar = () => {
                                 </div>
                             </Link>
                     }
-                    {/* <Link to="/dashboard" className="mr-1">
-                        <div className="btn btn-ghost btn-circle avatar">
-                            {
-                                user?.photoURL ? <div className="rounded-full">
-                                    <img src={user.photoURL} alt="" />
-                                </div>
-                                    :
-                                    <div className="rounded-full">
-                                        <CgProfile className="text-3xl"></CgProfile>
-                                    </div>
-                            }
-
-
-                        </div>
-                    </Link> */}
                     {
                         user ? <button className="btn  btn-accent"><Link onClick={handleSignOut} to="/">Sign Out</Link></button> :
                             <Link to="/signIn">

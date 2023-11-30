@@ -37,12 +37,24 @@ const Dashboard = () => {
 
                                 <NavLink to="/dashboard/manageBanner">Manage Banner</NavLink>
                             </li>
+                            <li className="flex ">
+
+                                <NavLink to="/dashboard/reservation">Manage Reservation</NavLink>
+                            </li>
 
                         </> :
                             <>
                                 <li className="flex ">
 
                                     <NavLink to="/dashboard/myProfile">My Profile</NavLink>
+                                </li>
+                                <li className="flex ">
+
+                                    <NavLink to="/dashboard/appointment">Appointments</NavLink>
+                                </li>
+                                <li className="flex ">
+
+                                    <NavLink to="/dashboard/report">Report</NavLink>
                                 </li>
 
                             </>

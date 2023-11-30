@@ -42,12 +42,13 @@ const ManageTest = () => {
     }
 
     const handleReservation = (item) =>{
-        navigate(`/dashboard/reservation/${item._id}`)
+        navigate(`/dashboard/testReserve/${item.name}`)
     }
 
 
     return (
         <div>
+            <h1 className="text-4xl font-semibold text-center my-4">Manage Test</h1>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

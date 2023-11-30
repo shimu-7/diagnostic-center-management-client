@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 const MyProfile = () => {
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic();
-    const { data: userInfo, refetch } = useQuery({
-        queryKey: ['users'],
+    const { data: userInfo } = useQuery({
+        queryKey: ['userInfo'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/users/${user.email}`);
             return res.data;
@@ -18,12 +18,15 @@ const MyProfile = () => {
     console.log(userInfo)
     return (
         <div>
+            <h2 className="text-xl font-semibold text-center my-5">{userInfo?.name}'s Profile</h2>
             <div className="flex flex-col md:flex-row p-5">
                 <div className="md:w-1/3">
                     {
                         userInfo?.image ? <img src={userInfo?.image} alt="" /> : <h2 className="text-4xl font-semibold">Image <br /> Not <br /> Found</h2>
                     }
-                     <button className="btn my-4 w-full btn-accent">Edit Profile</button>
+                    <Link to="/dashboard/updateProfile">
+                    <button className="btn my-4 w-full btn-accent">Edit Profile</button>
+                    </Link>
 
                 </div>
                

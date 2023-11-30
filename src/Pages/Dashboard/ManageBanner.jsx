@@ -39,11 +39,8 @@ const ManageBanner = () => {
 
     return (
         <div>
-            Manage Banner
-            <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">All Banner</h2>
-                <h2 className="text-3xl">Total Users: {banners.length}</h2>
-            </div>
+            <h1 className="text-4xl font-semibold text-center my-4">Manage Banner</h1>
+            
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

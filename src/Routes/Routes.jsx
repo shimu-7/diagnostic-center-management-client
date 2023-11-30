@@ -19,6 +19,14 @@ import ManageBanner from "../Pages/Dashboard/ManageBanner";
 import TestDetails from "../Pages/TestDetails";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../Pages/Dashboard/MyProfile";
+import UpdateProfile from "../Pages/Dashboard/UpdateProfile";
+import Appoinment from "../Pages/Dashboard/Appoinment";
+import AboutUs from "../Pages/AboutUs";
+import ContactUs from "../Pages/ContactUs";
+import Doctors from "../Pages/Doctors";
+import Reports from "../Pages/Dashboard/Reports";
+import Reservations from "../Pages/Dashboard/Reservations";
+import TestReserve from "../Pages/Dashboard/TestReserve";
 
 export const router = createBrowserRouter([
     {
@@ -44,8 +52,21 @@ export const router = createBrowserRouter([
             {
                 path: "testDetails/:id",
                 element: <PrivateRoute><TestDetails></TestDetails></PrivateRoute>,
-                loader: ({params})=>fetch(`http://localhost:5000/tests/${params.id}`)
-            }
+                loader: ({params})=>fetch(`https://final-project-server-nine.vercel.app/tests/${params.id}`)
+            },
+            {
+                path: "about",
+                element: <AboutUs></AboutUs>
+            },
+            {
+                path: "/contact",
+                element: <ContactUs></ContactUs>
+            },
+            {
+                path: "/doctor",
+                element: <Doctors></Doctors>
+            },
+            
         ]
     },
     {
@@ -71,7 +92,7 @@ export const router = createBrowserRouter([
             {
                 path: "updateTest/:id",
                 element: <UpdateTest></UpdateTest>,
-                loader: ({params})=>fetch(`http://localhost:5000/tests/${params.id}`)
+                loader: ({params})=>fetch(`https://final-project-server-nine.vercel.app/tests/${params.id}`)
             },
             {
                 path: "reservation/:id",
@@ -88,6 +109,26 @@ export const router = createBrowserRouter([
             {
                 path: "myProfile",
                 element: <MyProfile></MyProfile>
+            },
+            {
+                path: "updateProfile",
+                element: <UpdateProfile></UpdateProfile>
+            },
+            {
+                path: "appointment",
+                element: <Appoinment></Appoinment>
+            },
+            {
+                path: "reservation",
+                element: <Reservations></Reservations>
+            },
+            {
+                path: "testReserve/:name",
+                element: <TestReserve></TestReserve>
+            },
+            {
+                path: "report",
+                element: <Reports></Reports>
             }
         ]
     }

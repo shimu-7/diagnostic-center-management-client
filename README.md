@@ -1,8 +1,15 @@
-# React + Vite
+# Diagnostic Center Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**5 project features**
+---
+* it is a site where users whether logged in or not can view all services/tests
+* Logged in user will see his/her dashboard based on their role
+* An admin will able to add a new test, modify test, change one's role and manage reservations
+* By clicking on profile picture(navbar end), user will redirect to user dashboard which is private routes .
 
-Currently, two official plugins are available:
+**Live Link**
+---
+https://velvety-biscochitos-24094c.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+

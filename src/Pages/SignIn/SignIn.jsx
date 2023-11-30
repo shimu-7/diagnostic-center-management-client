@@ -1,16 +1,15 @@
 import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 
 const SignIn = () => {
-
+    
     const { signIn } = useContext(AuthContext)
 
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    
 
     const [logError, setLogError] = useState(null)
 
@@ -30,9 +29,9 @@ const SignIn = () => {
                     title: "Great!!!",
                     text: "Signed in successfully",
                 });
-                navigate(from, { replace: true });
+                navigate("/");
             })
-            .catch(error=>{
+            .catch(error => {
                 setLogError(error.message)
             })
 
