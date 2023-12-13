@@ -76,7 +76,7 @@ const Reservations = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            reservations.map((item, idx) => <tr key={item._id}>
+                            reservations?.map((item, idx) => <tr key={item._id}>
                                 <th>
                                     {idx + 1}
                                 </th>

@@ -56,7 +56,7 @@ const ManageBanner = () => {
                     </thead>
                     <tbody>
                         {
-                            banners.map((banner, idx) => <tr key={banner._id}>
+                            banners?.map((banner, idx) => <tr key={banner._id}>
                                 <th>{idx + 1}</th>
                                 <td>
                                     <div className="flex items-center gap-3">

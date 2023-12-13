@@ -79,7 +79,7 @@ const TestReserve = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            selected.map((item, idx) => <tr key={item._id}>
+                            selected?.map((item, idx) => <tr key={item._id}>
                                 <th>
                                     {idx + 1}
                                 </th>

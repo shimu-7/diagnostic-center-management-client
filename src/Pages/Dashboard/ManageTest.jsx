@@ -68,7 +68,7 @@ const ManageTest = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            tests.map((item, idx) => <tr key={item._id}>
+                            tests?.map((item, idx) => <tr key={item._id}>
                                 <th>
                                     {idx + 1}
                                 </th>
